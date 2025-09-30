@@ -16,7 +16,7 @@ class TestFileHostingAPI(unittest.TestCase):
         os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
     def tearDown(self):
-        """Remove download directory after each test."""
+        """Clean download directory after each test."""
         if os.path.exists(DOWNLOAD_DIR):
             shutil.rmtree(DOWNLOAD_DIR)
             print(f"[v] Cleaned up {DOWNLOAD_DIR}")
@@ -40,7 +40,7 @@ class TestFileHostingAPI(unittest.TestCase):
         response = requests.get(f"{API_URL}/files")
         self.assertEqual(response.status_code, 200, "[x] Failed to fetch file list")
         file_list = response.json()
-        self.assertIsInstance(file_list, list, "[x] File list is not a JSON array")
+        self.assertIsInstance(file_list, list, "[x] File list is of an incorrect format")
         print(f"[v] Retrieved file list form the server: {file_list}")
 
         # Step 3: Download each file in the list
@@ -60,7 +60,7 @@ class TestFileHostingAPI(unittest.TestCase):
             )
             print(f"[v] Downloaded {filename} from the server to {file_path} and verified")
 
-        # Step 4: Delete each uploaded file
+        # Step 4: Delete each uploaded file from API
         for filename in file_list:
             response = requests.delete(f"{API_URL}/files/{filename}")
             self.assertEqual(
