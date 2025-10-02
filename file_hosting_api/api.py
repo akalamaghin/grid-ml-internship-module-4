@@ -57,4 +57,7 @@ def delete_file(filename):
 
 
 if __name__ == "__main__":
-    api.run(debug=True, port=8000)
+    api.run(
+        debug=os.getenv("DEBUG", "false").lower() in ("1", "true", "yes", "on"),
+        port=int(os.getenv("API_PORT", "8000"))
+    )

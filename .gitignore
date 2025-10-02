@@ -135,7 +135,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+# .env
 .envrc
 .venv
 env/
@@ -208,3 +208,6 @@ __marimo__/
 
 # Tests
 model_hosting_api/tests_ran/*.csv
+
+# MacOS
+.DS_Store

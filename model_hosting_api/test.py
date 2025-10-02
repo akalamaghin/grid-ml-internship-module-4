@@ -9,7 +9,7 @@ import random
 from io import BytesIO, StringIO
 
 
-API_URL = "http://localhost:8000"
+API_URL = os.getenv("API_URL")
 TESTS_RAN_DIR = "./tests_ran"
 
 

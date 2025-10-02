@@ -1,5 +1,9 @@
 ### Running
 
+First, set up the environment using the .env file to export all necessary variables:
+
+    export $(grep -v '^#' .env | xargs)
+
 Install all the dependencies with:
 
     pip install -r requirements.txt

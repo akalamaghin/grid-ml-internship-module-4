@@ -7,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from typing import cast
 from werkzeug.datastructures import FileStorage
 import time
+import os
 
 
 class IrisModel:
@@ -85,4 +86,7 @@ def predict():
 
 
 if __name__ == "__main__":
-    api.run(debug=True, port=8000)
+    api.run(
+        debug=os.getenv("DEBUG", "false").lower() in ("1", "true", "yes", "on"),
+        port=int(os.getenv("API_PORT", "8000"))
+    )

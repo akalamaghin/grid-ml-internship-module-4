@@ -2,9 +2,10 @@ import os
 import shutil
 import unittest
 import requests
+import os
 
 
-API_URL = "http://localhost:8000"
+API_URL = os.getenv("API_URL")
 UPLOAD_DIR = "./test_uploads"
 DOWNLOAD_DIR = "./test_downloads"
 
